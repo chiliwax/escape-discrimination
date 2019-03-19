@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c3434cb132803ae49b16b8a7c9eb3d82
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Subscribe Shadow
+  fontNames:
+  - Subscribe Shadow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7d8c3dbc025d86e469ff08134ef2146f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
