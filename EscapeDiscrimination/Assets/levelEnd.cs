@@ -4,37 +4,27 @@ using UnityEngine;
 
 public class levelEnd : MonoBehaviour
 {
-    public float _TimeBeforSpawn;
-    public GameObject _GameObjectToTrigger;
-    public Animator _animation;
-     void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject == _GameObjectToTrigger)
-        {
-            StartCoroutine(Cinematique());
-        }
-    }
-    IEnumerator Cinematique()
-    {
-        yield return new WaitForSeconds(_TimeBeforSpawn);
-        _animation.gameObject.SetActive(true);
-        _animation.enabled = true;
-        
-        //_animation.SetBool("End", true);   
-        //_animation.SetBool("End", false);
-        //Debug.Log("End !!!"); 
-        yield return new WaitForSeconds(4);
-        Destroy(this);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float boys_points;
+    public float old_man_points;
+    public float woman_points;
+    public float little_girl_points;
+    public GameObject _DialogBox;
+    public Transform _spawn;
+    public string _sceneName;
+    private GameObject _InstanciateDialog = null;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        
+        if (LayerMask.LayerToName(col.gameObject.layer) == "Player")
+        {
+            Debug.Log("enter in end");
+            _InstanciateDialog = Instantiate(_DialogBox, _spawn);
+            _InstanciateDialog.GetComponentInChildren<End_windows>().boy = boys_points;
+            _InstanciateDialog.GetComponentInChildren<End_windows>().littleGirl = little_girl_points;
+            _InstanciateDialog.GetComponentInChildren<End_windows>().oldMan = old_man_points;
+            _InstanciateDialog.GetComponentInChildren<End_windows>().Woman = woman_points;
+            _InstanciateDialog.GetComponentInChildren<End_windows>()._sceneName = _sceneName;
+            _InstanciateDialog.GetComponentInChildren<End_windows>().Calculate();
+        }
     }
 }
