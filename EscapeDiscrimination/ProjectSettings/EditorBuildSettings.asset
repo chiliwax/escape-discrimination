@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Blanc_template.unity
     guid: ce2003e361b1d1d4299ea63d86ae1039
+  - enabled: 1
+    path: Assets/Scenes/level1.unity
+    guid: 4795c7f120e35034494d78324e024c61
   m_configObjects: {}
