@@ -2843,7 +2843,7 @@ MonoBehaviour:
   _DialogBox: {fileID: 7811385646540924604, guid: b26211357bba7fc42ae573ed9bbf213c,
     type: 3}
   _spawn: {fileID: 1479986087}
-  _sceneName: SplashScreen
+  _sceneName: level2
 --- !u!61 &466752968
 BoxCollider2D:
   m_ObjectHideFlags: 0
