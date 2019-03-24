@@ -7,7 +7,8 @@ public class Dialog_trigger : MonoBehaviour
 {
     public float _TimeBeforSpawn;
     public float _LifeDuration;
-    public Transform _DialogSpawn;
+ //   public Transform _DialogSpawn;
+    public GameObject _DialogSpawnCharacter;
     public string _Dialog;
     public GameObject _DialogBox;
     public GameObject _GameObjectToTrigger;
@@ -26,8 +27,10 @@ public class Dialog_trigger : MonoBehaviour
     {
         yield return new WaitForSeconds(_TimeBeforSpawn);
         is_running = true;
-        _InstanciateDialog = Instantiate(_DialogBox, _DialogSpawn);
+        //_InstanciateDialog = Instantiate(_DialogBox, _DialogSpawn);
+        _InstanciateDialog = Instantiate(_DialogBox, _DialogSpawnCharacter.transform.Find("DialogAnchor").transform);
         _InstanciateDialog.GetComponentInChildren<TextMeshPro>().text = _Dialog;
+        _InstanciateDialog.GetComponentInChildren<TxtController>()._parent = _DialogSpawnCharacter;
         yield return new WaitForSeconds(_LifeDuration);
         if (_InstanciateDialog)
         {

@@ -33,7 +33,7 @@ public class End_windows : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.anyKeyDown)
         {
             Debug.Log("enter pressed");
             SceneManager.LoadScene(_sceneName);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Joystick _androidJoystick;
     public Animator _animator;
     public CharacterController2D controller;
     public float runSpeed = 40f;
@@ -13,15 +14,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = (Input.GetAxisRaw("Horizontal") + _androidJoystick.Horizontal) * runSpeed;
+       // Debug.Log(Input.GetAxisRaw("Horizontal"));
 
+        if (_androidJoystick.Horizontal != 0)
+            Debug.Log(_androidJoystick.Horizontal);
         _animator.SetFloat("walk", Mathf.Abs(horizontalMove));
 
 
         if (Input.GetButtonDown("Jump"))
         {
-            jump = true;
-            _animator.SetBool("Jump", true);
+           Jump();
         }
 
         if (Input.GetButtonDown("Crouch"))
@@ -31,6 +34,14 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+        }
+    }
+
+    public void Jump() 
+    {
+        if (isActiveAndEnabled) {
+        jump = true;
+        _animator.SetBool("Jump", true);
         }
     }
 
