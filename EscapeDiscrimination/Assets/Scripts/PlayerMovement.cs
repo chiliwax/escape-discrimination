@@ -12,9 +12,11 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+      private int Androidmovement = 0;
+
     void Update()
     {
-        horizontalMove = (Input.GetAxisRaw("Horizontal") + _androidJoystick.Horizontal) * runSpeed;
+        horizontalMove = (Input.GetAxisRaw("Horizontal") + _androidJoystick.Horizontal + Androidmovement) * runSpeed;
        // Debug.Log(Input.GetAxisRaw("Horizontal"));
 
         if (_androidJoystick.Horizontal != 0)
@@ -34,6 +36,25 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+        }
+    }
+
+    public void Left()
+    {
+        if (isActiveAndEnabled) {
+        Androidmovement = -1;
+        }
+    }
+    public void Right()
+    {
+        if (isActiveAndEnabled) {
+        Androidmovement = 1;
+        }
+    }
+    public void ResetLeftAndRight()
+    {
+        if (isActiveAndEnabled) {
+        Androidmovement = 0;
         }
     }
 

@@ -15,10 +15,14 @@ public class Dialog_trigger : MonoBehaviour
     private GameObject _InstanciateDialog = null;
     private bool is_running = false;
 
+    private bool set_active = true;
+
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject == _GameObjectToTrigger && is_running == false)
+        if (set_active == true && col.gameObject == _GameObjectToTrigger && is_running == false)
         {
+            set_active = false;
+            Debug.Log(col.gameObject.name);
             StartCoroutine(DisplayDialog());
         }
     }
@@ -34,6 +38,7 @@ public class Dialog_trigger : MonoBehaviour
         yield return new WaitForSeconds(_LifeDuration);
         if (_InstanciateDialog)
         {
+            Debug.Log("destroy");
             Destroy(_InstanciateDialog);
         }
         Destroy(this);

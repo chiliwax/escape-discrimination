@@ -8,17 +8,19 @@ public class AnroidJumpButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 {
     public Button _button;
     public UnityEngine.Events.UnityEvent button_trigger;
+    public UnityEngine.Events.UnityEvent button_untrigger;
 
     private bool _flag = false;
     void Update()
     {
-        if (!ispressed)
+        if (!ispressed && _flag == true)
         {
             _flag = false;
+            button_untrigger.Invoke();
             return;
         }
         // DO SOMETHING HERE
-        if (_flag == false)
+        if (ispressed && _flag == false)
         { 
             _flag = true;
             button_trigger.Invoke();

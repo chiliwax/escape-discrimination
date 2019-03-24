@@ -11,10 +11,12 @@ public class Social_trigger : MonoBehaviour
     public enum Who{ OldMan, Woman, Boy, Littlegirl }
     public Who _Who;
     public GameObject _notif;
+    private bool set_active = true;
+
 
    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject == _GameObjectToTrigger && is_running == false)
+        if (set_active == true && col.gameObject == _GameObjectToTrigger && is_running == false)
         {
             GainXp();
         }
